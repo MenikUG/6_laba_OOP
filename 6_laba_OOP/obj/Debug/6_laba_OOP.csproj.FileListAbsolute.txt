@@ -1,0 +1,10 @@
+D:\Projects\6_laba_OOP\6_laba_OOP\bin\Debug\6_laba_OOP.exe.config
+D:\Projects\6_laba_OOP\6_laba_OOP\bin\Debug\6_laba_OOP.exe
+D:\Projects\6_laba_OOP\6_laba_OOP\bin\Debug\6_laba_OOP.pdb
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\6_laba_OOP.csprojAssemblyReference.cache
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\_6_laba_OOP.laba6.resources
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\_6_laba_OOP.Properties.Resources.resources
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\6_laba_OOP.csproj.GenerateResource.cache
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\6_laba_OOP.csproj.CoreCompileInputs.cache
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\6_laba_OOP.exe
+D:\Projects\6_laba_OOP\6_laba_OOP\obj\Debug\6_laba_OOP.pdb
