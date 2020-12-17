@@ -177,6 +177,7 @@
             this.Name = "laba6";
             this.Text = "6 Laba OOP";
             this.TopMost = true;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.laba6_KeyDown);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);

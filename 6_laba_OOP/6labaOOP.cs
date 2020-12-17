@@ -184,7 +184,6 @@ namespace _6_laba_OOP
             storag.add_object(index, ref figure, k, ref indexin);
             // Снимаем выделение у всех объектов хранилища
             remove_selection_circle(ref storag);
-
             // Вызываем функцию отрисовки круга
             paint_figure(Color.Red, 4, ref storag, indexin);
             ++index;
@@ -289,18 +288,6 @@ namespace _6_laba_OOP
             }
             return -1;
         }
-        private void button_del__item_storage_Click(object sender, EventArgs e)
-        {   // Обработчик на удаление выделенных элементов из хранилища
-            remove_selected_circle(ref storag);
-            panel_drawing.Refresh();
-            if (storag.occupied(k) != 0)
-            {
-                for (int i = 0; i < k; ++i)
-                {
-                    paint_figure(Color.Navy, 4, ref storag, i);
-                }
-            }
-        }
 
         private void drawellipse_Click(object sender, EventArgs e)
         {
@@ -323,5 +310,20 @@ namespace _6_laba_OOP
             figure_now = 3;
         }
 
+        private void laba6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {   // Удаление выделенных фигур, если нажата кнопка delete
+                remove_selected_circle(ref storag);
+                panel_drawing.Refresh();
+                if (storag.occupied(k) != 0)
+                {
+                    for (int i = 0; i < k; ++i)
+                    {
+                        paint_figure(Color.Navy, 4, ref storag, i);
+                    }
+                }
+            }
+        }
     }
 }
