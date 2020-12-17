@@ -43,9 +43,9 @@ namespace _6_laba_OOP
 			public int lenght = 60;
 			public Line(int x, int y)
 			{
-				this.x = x - lenght;
+				this.x = x - lenght/2;
 				this.y = y;
-				this.x2 = x + lenght;
+				this.x2 = x + lenght/2;
 				this.y2 = y;
 			}
 		}
@@ -212,7 +212,21 @@ namespace _6_laba_OOP
 						if (storag.objects[i] as Circle != null)
 						{   // Если в хранилище круг
 							Circle circle = storag.objects[i] as Circle;
-							circle.y += y;
+							int c = circle.y + y;
+							if (c > 0 && c < (panel_drawing.ClientSize.Height - circle.rad*2 ))
+							{
+								circle.y += y;								
+							}
+							else
+                            {
+								if (c <= 0)
+								{
+									circle.y = 0;
+								}
+								else
+									if(c >= (panel_drawing.ClientSize.Height - circle.rad * 2))
+										circle.y = panel_drawing.ClientSize.Height - (circle.rad *2 );
+							}
 							storag.objects[i] = circle;
 						}
 						else
@@ -220,8 +234,26 @@ namespace _6_laba_OOP
 							if (storag.objects[i] as Line != null)
 							{   // Если в хранилище отрезок
 								Line line = storag.objects[i] as Line;
-								line.y += y;
-								line.y2 += y;
+								int l = line.y + y;
+								if (l > 0 && l < panel_drawing.ClientSize.Height)
+								{
+									line.y += y;
+									line.y2 += y;
+								}
+								else
+								{
+									if (l <= 0)
+									{
+										line.y = 2;
+										line.y2 = 2;
+									}
+									else
+										if (l >= panel_drawing.ClientSize.Height)
+										{
+										line.y = panel_drawing.ClientSize.Height - 2;
+										line.y2 = panel_drawing.ClientSize.Height - 2;
+									}										
+								}
 								storag.objects[i] = line;
 							}
 							else
@@ -229,7 +261,21 @@ namespace _6_laba_OOP
 								if (storag.objects[i] as Square != null)
 								{   // Если в хранилище квадрат
 									Square square = storag.objects[i] as Square;
-									square.y += y;
+									int s = square.y + y;
+									if (s > 0 && s < (panel_drawing.ClientSize.Height - square.size))
+									{
+										square.y += y;
+									}
+									else
+									{
+										if (s <= 0)
+										{
+											square.y = 1;
+										}
+										else
+											if (s >= (panel_drawing.ClientSize.Height - square.size - 1))
+											square.y = panel_drawing.ClientSize.Height - square.size - 1;
+									}
 									storag.objects[i] = square;
 								}
 							}
@@ -250,7 +296,21 @@ namespace _6_laba_OOP
 						if (storag.objects[i] as Circle != null)
 						{   // Если в хранилище круг
 							Circle circle = storag.objects[i] as Circle;
-							circle.x += x;
+							int c = circle.x + x;
+							if (c > 0 && c < (panel_drawing.ClientSize.Width - (circle.rad * 2)))
+							{
+								circle.x += x;
+							}
+							else
+							{
+								if (c <= 0)
+								{
+									circle.x = 0;
+								}
+								else
+									if (c >= (panel_drawing.ClientSize.Width - (circle.rad * 2)))
+										circle.x = panel_drawing.ClientSize.Width - (circle.rad * 2);
+							}
 							storag.objects[i] = circle;
 						}
 						else
@@ -258,8 +318,27 @@ namespace _6_laba_OOP
 							if (storag.objects[i] as Line != null)
 							{   // Если в хранилище отрезок
 								Line line = storag.objects[i] as Line;
-								line.x += x;
-								line.x2 += x;
+								int l = line.x + x;
+								int l2 = line.x2 + x;
+								if (l > 0 && l2 < panel_drawing.ClientSize.Width)
+								{
+									line.x += x;
+									line.x2 += x;
+								}
+								else
+								{
+									if (l <= 0)
+									{
+										line.x = 0;
+										line.x2 = line.lenght;
+									}
+									else
+										if (l2 >= panel_drawing.ClientSize.Width)
+										{
+											line.x = panel_drawing.ClientSize.Width - line.lenght;
+											line.x2 = panel_drawing.ClientSize.Width;
+										}
+								}
 								storag.objects[i] = line;
 							}
 							else
@@ -267,7 +346,21 @@ namespace _6_laba_OOP
 								if (storag.objects[i] as Square != null)
 								{   // Если в хранилище квадрат
 									Square square = storag.objects[i] as Square;
-									square.x += x;
+									int s = square.x + x;
+									if (s > 0 && s < (panel_drawing.ClientSize.Width - square.size))
+									{
+										square.x += x;
+									}
+									else
+									{
+										if (s <= 0)
+										{
+											square.x = 1;
+										}
+										else
+											if (s >= (panel_drawing.ClientSize.Width - square.size - 1))
+											square.x = (panel_drawing.ClientSize.Width - square.size - 1);
+									}
 									storag.objects[i] = square;
 								}
 							}

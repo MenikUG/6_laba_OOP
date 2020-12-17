@@ -52,7 +52,7 @@
             this.panel_drawing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_drawing.Location = new System.Drawing.Point(13, 13);
             this.panel_drawing.Name = "panel_drawing";
-            this.panel_drawing.Size = new System.Drawing.Size(639, 450);
+            this.panel_drawing.Size = new System.Drawing.Size(639, 431);
             this.panel_drawing.TabIndex = 0;
             this.panel_drawing.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_drawing_MouseClick);
             // 
