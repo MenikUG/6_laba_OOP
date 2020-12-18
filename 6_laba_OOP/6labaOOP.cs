@@ -210,7 +210,7 @@ namespace _6_laba_OOP
 							Circle circle = stg.objects[i] as Circle;
 							int c = circle.y + y;
 							// Проверяем на выход из границы поля
-							if (c > 0 && c < (panel_drawing.ClientSize.Height - circle.rad*2 ))
+							if (c > 0 && c < (panel_drawing.ClientSize.Height - circle.rad * 2))
 								circle.y += y;								
 							else
                             {
@@ -428,6 +428,13 @@ namespace _6_laba_OOP
 				}
 			}
 		}
+
+		private void paint_all(ref Storage stg)
+        {
+			for (int i = 0; i < k; ++i)
+				if (!stg.check_empty(i))
+					paint_figure(stg.objects[i].color, 4, ref storag, i);
+		}
 		private int check_figure(ref Storage stg, int size, int x, int y)
 		{   // Проверяет есть ли уже фигура с такими же координатами в хранилище
 			if (stg.occupied(size) != 0)
@@ -439,7 +446,9 @@ namespace _6_laba_OOP
 						if (stg.objects[i] as Circle != null)
 						{   // Если в хранилище круг
 							Circle circle = stg.objects[i] as Circle;
-							if (((x - circle.x - circle.rad) * (x - circle.x - circle.rad) + (y - circle.y - circle.rad) * (y - circle.y - circle.rad)) < (circle.rad * circle.rad))
+							if (((x - circle.x - circle.rad) * (x - circle.x - circle.rad) + 
+								(y - circle.y - circle.rad) * (y - circle.y - circle.rad)) 
+								< (circle.rad * circle.rad))
 								return i;
 						}
 						else
@@ -447,7 +456,8 @@ namespace _6_laba_OOP
 							if (stg.objects[i] as Line != null)
 							{   // Если в хранилище отрезок
 								Line line = stg.objects[i] as Line;                                
-								if (line.x <= x && x <= (line.x + line.lenght) && (line.y - 2) <= y && y <= (line.y + line.wight))
+								if (line.x <= x && x <= (line.x + line.lenght) && (line.y - 2) <= y &&
+									y <= (line.y + line.wight))
 									return i;
 							}
 							else
@@ -501,59 +511,44 @@ namespace _6_laba_OOP
 			{   // Удаление выделенных фигур, если нажата кнопка delete
 				remove_selected_circle(ref storag);
 				panel_drawing.Refresh();
-				if (storag.occupied(k) != 0)
-					for (int i = 0; i < k; ++i)
-						paint_figure(Color.Navy, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if(e.KeyCode == Keys.W)
 			{	// Перемещение по оси X вверх
 				move_y(ref storag, -10);
 				panel_drawing.Refresh();
-				for(int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.S)
 			{	// Перемещение по оси X вниз
 				move_y(ref storag, +10);
 				panel_drawing.Refresh();
-				for (int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.A)
 			{	// Перемещение по оси Y вниз
 				move_x(ref storag, -10);
                 panel_drawing.Refresh();
-				for (int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.D)
 			{   // Перемещение по оси Y вверх
 				move_x(ref storag, +10);
                 panel_drawing.Refresh();
-				for (int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.Oemplus)
 			{	// Увеличиваем размер фигуры
 				changesize(ref storag, 10);
 				panel_drawing.Refresh();
-				for (int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.OemMinus)
 			{	// Уменьшаем размер фигуры
 				changesize(ref storag, -10);
 				panel_drawing.Refresh();
-				for (int i = 0; i < k; ++i)
-					if (!storag.check_empty(i))
-						paint_figure(storag.objects[i].color, 4, ref storag, i);
+				paint_all(ref storag);
 			}
-
 		}
 
         private void btn_select_color_Click(object sender, EventArgs e)

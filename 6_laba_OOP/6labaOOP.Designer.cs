@@ -170,6 +170,7 @@
             // 
             // btn_select_color
             // 
+            this.btn_select_color.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_select_color.BackColor = System.Drawing.Color.White;
             this.btn_select_color.Location = new System.Drawing.Point(661, 209);
             this.btn_select_color.Name = "btn_select_color";
