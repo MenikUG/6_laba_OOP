@@ -40,6 +40,8 @@
             this.drawrtriangle = new System.Windows.Forms.ToolStripButton();
             this.drawline = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_select_color = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,10 +106,10 @@
             this.drawrtriangle,
             this.drawline});
             this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menu.Location = new System.Drawing.Point(661, 280);
+            this.menu.Location = new System.Drawing.Point(661, 83);
             this.menu.Name = "menu";
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(123, 167);
+            this.menu.Size = new System.Drawing.Size(123, 122);
             this.menu.TabIndex = 0;
             this.menu.Text = "Меню";
             // 
@@ -166,14 +168,31 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Выберите фигуру, которую хотите отобразить на панели";
             // 
+            // btn_select_color
+            // 
+            this.btn_select_color.BackColor = System.Drawing.Color.White;
+            this.btn_select_color.Location = new System.Drawing.Point(661, 209);
+            this.btn_select_color.Name = "btn_select_color";
+            this.btn_select_color.Size = new System.Drawing.Size(123, 62);
+            this.btn_select_color.TabIndex = 2;
+            this.btn_select_color.Text = "Цвет";
+            this.btn_select_color.UseVisualStyleBackColor = false;
+            this.btn_select_color.Click += new System.EventHandler(this.btn_select_color_Click);
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.Color = System.Drawing.Color.White;
+            // 
             // laba6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 456);
+            this.Controls.Add(this.btn_select_color);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.panel_drawing);
+            this.KeyPreview = true;
             this.Name = "laba6";
             this.Text = "6 Laba OOP";
             this.TopMost = true;
@@ -198,6 +217,8 @@
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private System.Windows.Forms.ToolStripButton drawrtriangle;
         private System.Windows.Forms.ToolStripButton drawline;
+        private System.Windows.Forms.Button btn_select_color;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
