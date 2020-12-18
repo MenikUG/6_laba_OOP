@@ -213,7 +213,7 @@ namespace _6_laba_OOP
 							int c = circle.y + y;
 							int gran = panel_drawing.ClientSize.Height - circle.rad * 2;
 							// Проверяем на выход из границы поля
-							check(c, y, gran, gran, ref stg.objects[i], 0, 2);
+							check(c, y, gran, gran - 2, ref stg.objects[i], 2);
 						}
 						else
 						{
@@ -223,7 +223,7 @@ namespace _6_laba_OOP
 								int l = line.y + y;
 								int gran = panel_drawing.ClientSize.Height - line.wight;
 								// Проверяем на выход из границы поля
-								check(l, y, gran, --gran, ref stg.objects[i], 1, 2);
+								check(l, y, gran, --gran, ref stg.objects[i], 2);
 							}
 							else
 							{
@@ -233,7 +233,7 @@ namespace _6_laba_OOP
 									int s = square.y + y;
 									int gran = panel_drawing.ClientSize.Height - square.size;
 									// Проверяем на выход из границы поля
-									check(s, y, gran, --gran, ref stg.objects[i], 1, 2);
+									check(s, y, gran, --gran, ref stg.objects[i], 2);
 								}
 							}
 						}
@@ -256,7 +256,7 @@ namespace _6_laba_OOP
                             int c = circle.x + x;
 							int gran = panel_drawing.ClientSize.Width - (circle.rad * 2);
 							// Проверяем на выход из границы поля
-							check(c, x, gran, --gran, ref stg.objects[i], 0, 1);
+							check(c, x, gran, gran - 2, ref stg.objects[i], 1);
 						}
                         else
                         {
@@ -266,7 +266,7 @@ namespace _6_laba_OOP
                                 int l = line.x + x;
 								int gran = panel_drawing.ClientSize.Width - line.lenght;
 								// Проверяем на выход из границы поля
-								check(l, x, gran, --gran, ref stg.objects[i], 1, 1);
+								check(l, x, gran, --gran, ref stg.objects[i], 1);
 							}
                             else
                             {
@@ -276,7 +276,7 @@ namespace _6_laba_OOP
                                     int s = square.x + x;
 									int gran = panel_drawing.ClientSize.Width - square.size;
 									// Проверяем на выход из границы поля
-									check(s, x, gran, --gran, ref stg.objects[i], 1, 1);
+									check(s, x, gran, --gran, ref stg.objects[i], 1);
 								}
                             }
                         }
@@ -285,7 +285,7 @@ namespace _6_laba_OOP
             }
         }
 
-		private void check(int f, int y, int gran, int gran1, ref Figure figures, int c, int g)
+		private void check(int f, int y, int gran, int gran1, ref Figure figures, int g)
         {	// Проверка на выход фигуры за границы
 			ref int b = ref figures.x;
 			if (g == 2)			
@@ -295,7 +295,7 @@ namespace _6_laba_OOP
 			else
 			{
 				if (f <= 0)
-					b = c;
+					b = 1;
 				else
 					if (f >= gran1)
 						b = gran1;
