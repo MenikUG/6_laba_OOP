@@ -19,12 +19,13 @@ namespace _6_laba_OOP
 
 		class Figure
 		{
+			public int x, y;
 			public Color color = Color.Navy;
 			public Color fillcolor = Color.White;
 		}
 		class Circle: Figure
 		{
-			public int x, y; // Координаты круга
+			//public int x, y; // Координаты круга
 			public int rad = 30; // Радиус круга
 			public Circle(int x, int y)
 			{
@@ -37,7 +38,7 @@ namespace _6_laba_OOP
 
 		class Line: Figure
 		{
-			public int x, y;
+			//public int x, y;
 			public int lenght = 60;
 			public int wight = 5;
 			public Line(int x, int y)
@@ -49,7 +50,8 @@ namespace _6_laba_OOP
 
 		class Square: Figure
 		{
-			public int x, y, width, height;
+			//public int x, y, 
+			public int width, height;
 			public int size = 60;
 			public Square(int x, int y)
 			{
@@ -209,18 +211,9 @@ namespace _6_laba_OOP
 						{   // Если в хранилище круг
 							Circle circle = stg.objects[i] as Circle;
 							int c = circle.y + y;
+							int gran = panel_drawing.ClientSize.Height - circle.rad * 2;
 							// Проверяем на выход из границы поля
-							if (c > 0 && c < (panel_drawing.ClientSize.Height - circle.rad * 2))
-								circle.y += y;								
-							else
-                            {
-								if (c <= 0)
-									circle.y = 0;
-								else
-									if(c >= (panel_drawing.ClientSize.Height - circle.rad * 2))
-										circle.y = panel_drawing.ClientSize.Height - (circle.rad *2 );
-							}
-							stg.objects[i] = circle;
+							check(c, y, gran, gran, ref stg.objects[i], 0, 2);
 						}
 						else
 						{
@@ -228,18 +221,9 @@ namespace _6_laba_OOP
 							{   // Если в хранилище отрезок
 								Line line = stg.objects[i] as Line;
 								int l = line.y + y;
+								int gran = panel_drawing.ClientSize.Height - line.wight;
 								// Проверяем на выход из границы поля
-								if (l > 0 && l < (panel_drawing.ClientSize.Height - line.wight))
-									line.y += y;									
-								else
-								{
-									if (l <= 0)
-										line.y = 1;
-									else
-										if (l >= (panel_drawing.ClientSize.Height - line.wight - 1))
-											line.y = panel_drawing.ClientSize.Height - line.wight - 1;									
-								}
-								stg.objects[i] = line;
+								check(l, y, gran, --gran, ref stg.objects[i], 1, 2);
 							}
 							else
 							{
@@ -247,18 +231,9 @@ namespace _6_laba_OOP
 								{   // Если в хранилище квадрат
 									Square square = stg.objects[i] as Square;
 									int s = square.y + y;
+									int gran = panel_drawing.ClientSize.Height - square.size;
 									// Проверяем на выход из границы поля
-									if (s > 0 && s < (panel_drawing.ClientSize.Height - square.size))
-										square.y += y;
-									else
-									{
-										if (s <= 0)
-											square.y = 1;
-										else
-											if (s >= (panel_drawing.ClientSize.Height - square.size - 1))
-											square.y = panel_drawing.ClientSize.Height - square.size - 1;
-									}
-									stg.objects[i] = square;
+									check(s, y, gran, --gran, ref stg.objects[i], 1, 2);
 								}
 							}
 						}
@@ -279,63 +254,53 @@ namespace _6_laba_OOP
                         {   // Если в хранилище круг
                             Circle circle = stg.objects[i] as Circle;
                             int c = circle.x + x;
+							int gran = panel_drawing.ClientSize.Width - (circle.rad * 2);
 							// Проверяем на выход из границы поля
-							if (c > 0 && c < (panel_drawing.ClientSize.Width - (circle.rad * 2)))
-                                circle.x += x;
-                            else
-                            {
-                                if (c <= 0)
-                                    circle.x = 0;
-                                else
-                                    if (c >= (panel_drawing.ClientSize.Width - (circle.rad * 2)))
-                                    circle.x = panel_drawing.ClientSize.Width - (circle.rad * 2);
-                            }
-							stg.objects[i] = circle;
-                        }
+							check(c, x, gran, --gran, ref stg.objects[i], 0, 1);
+						}
                         else
                         {
                             if (stg.objects[i] as Line != null)
                             {   // Если в хранилище отрезок
                                 Line line = stg.objects[i] as Line;
                                 int l = line.x + x;
+								int gran = panel_drawing.ClientSize.Width - line.lenght;
 								// Проверяем на выход из границы поля
-								if (l > 0 && l < panel_drawing.ClientSize.Width - line.lenght)
-                                    line.x += x;
-                                else
-                                {
-                                    if (l <= 0)
-                                        line.x = 0;
-                                    else
-                                        if (l >= panel_drawing.ClientSize.Width - line.lenght - 1)
-										    line.x = panel_drawing.ClientSize.Width - line.lenght - 1;
-                                }
-								stg.objects[i] = line;
-                            }
+								check(l, x, gran, --gran, ref stg.objects[i], 1, 1);
+							}
                             else
                             {
                                 if (stg.objects[i] as Square != null)
                                 {   // Если в хранилище квадрат
                                     Square square = stg.objects[i] as Square;
                                     int s = square.x + x;
+									int gran = panel_drawing.ClientSize.Width - square.size;
 									// Проверяем на выход из границы поля
-									if (s > 0 && s < (panel_drawing.ClientSize.Width - square.size))
-                                        square.x += x;
-                                    else
-                                    {
-                                        if (s <= 0)
-                                            square.x = 1;
-                                        else
-                                            if (s >= (panel_drawing.ClientSize.Width - square.size - 1))
-                                            square.x = (panel_drawing.ClientSize.Width - square.size - 1);
-                                    }
-									stg.objects[i] = square;
-                                }
+									check(s, x, gran, --gran, ref stg.objects[i], 1, 1);
+								}
                             }
                         }
                     }
                 }
             }
         }
+
+		private void check(int f, int y, int gran, int gran1, ref Figure figures, int c, int g)
+        {	// Проверка на выход фигуры за границы
+			ref int b = ref figures.x;
+			if (g == 2)			
+				 b = ref figures.y;
+			if (f > 0 && f < gran)
+				b += y;
+			else
+			{
+				if (f <= 0)
+					b = c;
+				else
+					if (f >= gran1)
+						b = gran1;
+			}
+		}
 
 		private void changesize(ref Storage stg, int size)
 		{	// Увеличивает или уменьшает размер фигур, в зависимости от size
@@ -430,11 +395,12 @@ namespace _6_laba_OOP
 		}
 
 		private void paint_all(ref Storage stg)
-        {
+        {	// Рисует все фигуры на панели
 			for (int i = 0; i < k; ++i)
 				if (!stg.check_empty(i))
 					paint_figure(stg.objects[i].color, 4, ref storag, i);
 		}
+
 		private int check_figure(ref Storage stg, int size, int x, int y)
 		{   // Проверяет есть ли уже фигура с такими же координатами в хранилище
 			if (stg.occupied(size) != 0)
