@@ -476,45 +476,33 @@ namespace _6_laba_OOP
 			if(e.KeyCode == Keys.Delete)
 			{   // Удаление выделенных фигур, если нажата кнопка delete
 				remove_selected_circle(ref storag);
-				panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if(e.KeyCode == Keys.W)
 			{	// Перемещение по оси X вверх
 				move_y(ref storag, -10);
-				panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.S)
 			{	// Перемещение по оси X вниз
 				move_y(ref storag, +10);
-				panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.A)
 			{	// Перемещение по оси Y вниз
 				move_x(ref storag, -10);
-                panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.D)
 			{   // Перемещение по оси Y вверх
 				move_x(ref storag, +10);
-                panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.Oemplus)
 			{	// Увеличиваем размер фигуры
 				changesize(ref storag, 10);
-				panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
 			if (e.KeyCode == Keys.OemMinus)
 			{	// Уменьшаем размер фигуры
 				changesize(ref storag, -10);
-				panel_drawing.Refresh();
-				paint_all(ref storag);
 			}
+			panel_drawing.Refresh();
+			paint_all(ref storag);
 		}
 
         private void btn_select_color_Click(object sender, EventArgs e)
